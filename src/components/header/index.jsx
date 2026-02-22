@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import get from 'lodash/get';
 import React from 'react';
 
-import profileImg from '../../images/profile.jpg';
+import profileImg from '../../images/thai2.png';
 
 const classes = {
   wrapper: 'block mb-6 md:flex',
@@ -11,6 +11,7 @@ const classes = {
   contentWrapper: 'flex-none pt-6 md:pt-1 md:flex-1 md:pl-20',
   name: 'text-5xl text-gray-900 font-bold leading-tight hover:text-black',
   description: 'text-gray-600',
+  //location: 'text-gray-600',
   list: 'mt-6 uppercase tracking-wider',
   item: 'inline list-none pr-4',
   link:
@@ -18,9 +19,10 @@ const classes = {
 };
 
 const Header = ({ metadata = {}, noBlog = false }) => {
-  const twitter = get(metadata, 'author', false);
+  const stackoverflow = get(metadata, 'author', false);
   const github = get(metadata, 'github', false);
   const linkedin = get(metadata, 'linkedin', false);
+  const resume = get(metadata, 'resume', false);
 
   return (
     <div className={classes.wrapper}>
@@ -35,13 +37,10 @@ const Header = ({ metadata = {}, noBlog = false }) => {
         </h1>
         <p className={classes.description}>{metadata.description}</p>
         <ul className={classes.list}>
-          {twitter && (
+          {stackoverflow && (
             <li className={classes.item}>
-              <a
-                className={classes.link}
-                href={`https://twitter.com/${twitter}`}
-              >
-                Twitter
+              <a className={classes.link} href={stackoverflow}>
+                Stack-overflow
               </a>
             </li>
           )}
@@ -52,10 +51,11 @@ const Header = ({ metadata = {}, noBlog = false }) => {
               </a>
             </li>
           )}
-          {linkedin && (
+          
+          {resume && (
             <li className={classes.item}>
-              <a className={classes.link} href={linkedin}>
-                LinkedIn
+              <a className={classes.link} href={resume}>
+                Resume
               </a>
             </li>
           )}
